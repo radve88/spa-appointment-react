@@ -88,9 +88,8 @@ const handleSubmit = (e) => {
     a.click();
   };
 const [user, setUser] = useState(null);
-const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
-  if (!GOOGLE_CLIENT_ID) return; // Skip calendar logic if no key
-  else {
+
+  
 useEffect(() => {
   
   function start() {
@@ -188,7 +187,7 @@ const addToGoogleCalendar = async (appointment) => {
       </ul>
     </div>
   );
-}
+
 
 export default App;
 
