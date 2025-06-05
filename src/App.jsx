@@ -1,24 +1,14 @@
-import React, { useState } from 'react';;
+import React, { useState } from 'react';
 import './App.css';
 import { useGoogleLogin } from '@react-oauth/google';
 import { gapi } from 'gapi-script';
 import { useEffect } from 'react';
-// 1. Load from localStorage
-const loadAppointments = () => {
-  const data = localStorage.getItem('appointments');
-  return data ? JSON.parse(data) : [];
-};
+
 function App() {
-  
- const [appointments, setAppointments] = useState(loadAppointments);
+  const [appointments, setAppointments] = useState([]);
   const [form, setForm] = useState({ name: '', contact: '', date: '', time: '' });
   const [filter, setFilter] = useState('all'); // new
   const [search, setSearch] = useState('');    // for phase 2
-
-useEffect(() => {
-    localStorage.setItem('appointments', JSON.stringify(appointments));
-  }, [appointments]);
-
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -89,9 +79,7 @@ const handleSubmit = (e) => {
   };
 const [user, setUser] = useState(null);
 
-  
 useEffect(() => {
-  
   function start() {
     gapi.client.init({
       apiKey: '', // Optional if only using OAuth
@@ -136,7 +124,7 @@ const addToGoogleCalendar = async (appointment) => {
   } catch (error) {
     console.error('Calendar error', error);
     alert('Failed to add to calendar');
-  }}
+  }
 };
 
   return (
@@ -187,7 +175,7 @@ const addToGoogleCalendar = async (appointment) => {
       </ul>
     </div>
   );
-
+}
 
 export default App;
 
