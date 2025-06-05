@@ -88,10 +88,11 @@ const handleSubmit = (e) => {
     a.click();
   };
 const [user, setUser] = useState(null);
-
-useEffect(() => {
-  const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
+const GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID;
   if (!GOOGLE_CLIENT_ID) return; // Skip calendar logic if no key
+  else {
+useEffect(() => {
+  
   function start() {
     gapi.client.init({
       apiKey: '', // Optional if only using OAuth
@@ -136,7 +137,7 @@ const addToGoogleCalendar = async (appointment) => {
   } catch (error) {
     console.error('Calendar error', error);
     alert('Failed to add to calendar');
-  }
+  }}
 };
 
   return (
