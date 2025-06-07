@@ -78,6 +78,25 @@ const handleSubmit = (e) => {
     a.click();
   };
 const [user, setUser] = useState(null);
+// 1️⃣ Load and purge local data on app load
+  useEffect(() => {
+    const stored = localStorage.getItem('appointments');
+    if (stored) {
+      const parsed = JSON.parse(stored);
+      const now = new Date();
+      const filtered = parsed.filter(appt => {
+        const apptDate = new Date(appt.date);
+        const ageInDays = (now - apptDate) / (1000 * 60 * 60 * 24);
+        return ageInDays <= 60;
+      });
+      setAppointments(filtered);
+    }
+  }, []);
+
+  // 2️⃣ Save data to local storage on every change
+  useEffect(() => {
+    localStorage.setItem('appointments', JSON.stringify(appointments));
+  }, [appointments]);
 
 useEffect(() => {
   function start() {
@@ -123,7 +142,7 @@ const addToGoogleCalendar = async (appointment) => {
     alert('Added to your Google Calendar!');
   } catch (error) {
     console.error('Calendar error', error);
-    alert('Failed to add to calendar');
+    alert('Not Added to Cakander But Saved Locally');
   }
 };
 
