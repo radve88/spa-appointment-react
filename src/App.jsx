@@ -6,8 +6,8 @@ import { useEffect } from 'react';
 
 function App() {
   const [appointments, setAppointments] = useState([]);
-  const [form, setForm] = useState({ name: '', contact: '', date: '', time: '' });
-  const [filter, setFilter] = useState('all'); // new
+  const [form, setForm] = useState({ name: '', remarks: '', contact: '', date: '', time: '' });
+  const [filter, setFilter] = useState('all'); // new 
   const [search, setSearch] = useState('');    // for phase 2
 
   const handleChange = (e) => {
@@ -67,8 +67,8 @@ const handleSubmit = (e) => {
 
   const exportCSV = () => {
     const csv = ['Name,Contact,Date,Time'];
-    appointments.forEach(({ name, contact, date, time }) => {
-      csv.push(`${name},${contact},${date},${time}`);
+    appointments.forEach(({ name, remarks. contact, date, time }) => {
+      csv.push(`${name},${remarks},${contact},${date},${time}`);
     });
     const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
     const url = URL.createObjectURL(blob);
