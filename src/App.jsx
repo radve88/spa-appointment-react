@@ -159,6 +159,7 @@ const addToGoogleCalendar = async (appointment) => {
       <form onSubmit={handleSubmit}>
         <input name="name" placeholder="Name" value={form.name} onChange={handleChange} required />
         <input name="contact" placeholder="Phone or Email" value={form.contact} onChange={handleChange} required />
+        <input   name="remarks"   placeholder="Remarks"   value={form.remarks} onChange={handleChange} />
         <input name="date" type="date" value={form.date} onChange={handleChange} required />
         <input name="time" type="time" value={form.time} onChange={handleChange} required />
         <button type="submit">Book Appointment</button>
