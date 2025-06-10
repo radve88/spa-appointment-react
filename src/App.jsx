@@ -21,7 +21,7 @@ const [form, setForm] = useState({
 });
 
   const [appointments, setAppointments] = useState([]);
-  const [form, setForm] = useState({ name: '', remarks: '', contact: '', date: '', time: '' });
+  const [formdata, setFormdata] = useState({ name: '', remarks: '', contact: '', date: '', time: '' });
   const [filter, setFilter] = useState('all'); // new 
   const [search, setSearch] = useState('');    // for phase 2
 
