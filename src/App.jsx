@@ -188,11 +188,19 @@ const addToGoogleCalendar = async (appointment) => {
 
       <h2>📋 Filtered Appointments</h2>
       <ul>
-        {filteredAppointments.map((appt) => (
-          <li key={appt.id}>
-            {appt.name} | {appt.contact} | {appt.date} {appt.time}
-          </li>
-        ))}
+        {filteredAppointments.map(({ name, contact, remarks, date, time, id }) => {
+  const dayName = days[new Date(date).getDay()];
+  return (
+    <div key={id} className="appointment">
+      <p><strong>Name:</strong> {name}</p>
+      <p><strong>Contact:</strong> {contact}</p>
+      <p><strong>Date:</strong> {date} ({dayName})</p>
+      <p><strong>Time:</strong> {time}</p>
+      {remarks && <p><strong>Remarks:</strong> {remarks}</p>}
+    </div>
+  );
+})}
+
       </ul>
     </div>
   );
