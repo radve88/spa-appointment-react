@@ -26,10 +26,11 @@ const handleSubmit = (e) => {
   addToGoogleCalendar(newAppointment); // ✅ Safe to call here
 };
 
-
+  const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const isToday = (dateStr) => {
     const today = new Date();
-    const date = new Date(dateStr);
+     const date = new Date(dateStr);
+    const dayName = days[date.getDay()];
     return date.toDateString() === today.toDateString();
   };
 
