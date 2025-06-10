@@ -82,7 +82,7 @@ const handleSubmit = (e) => {
   };
 
   const exportCSV = () => {
-    const csv = ['Name,Contact,Date,Time'];
+    const csv = ['Name,Remarks,Contact,Date,Time'];
     appointments.forEach(({ name, remarks, contact, date, time }) => {
       csv.push(`${name},${remarks},${contact},${date},${time}`);
     });
