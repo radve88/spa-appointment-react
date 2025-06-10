@@ -68,7 +68,7 @@ const handleSubmit = (e) => {
 
   const exportCSV = () => {
     const csv = ['Name,Contact,Date,Time'];
-    appointments.forEach(({ name, remarks. contact, date, time }) => {
+    appointments.forEach(({ name, remarks, contact, date, time }) => {
       csv.push(`${name},${remarks},${contact},${date},${time}`);
     });
     const blob = new Blob([csv.join('\n')], { type: 'text/csv' });
